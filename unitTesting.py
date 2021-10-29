@@ -1,6 +1,4 @@
 import unittest
-
-import exercises
 from exercises import *
 
 
@@ -88,6 +86,24 @@ class ReverseIntegerTesting(unittest.TestCase):
 
     def test_exampleFour(self):
         self.assertEqual(0, reverseInteger(0))
+
+
+class MedianSortedArrays(unittest.TestCase):
+    # Reference: https://leetcode.com/problems/median-of-two-sorted-arrays/
+    def test_exampleOne(self):
+        self.assertEqual(2.00000, findMedianSortedArrays([1, 3], [2]))
+
+    def test_exampleTwo(self):
+        self.assertEqual(2.50000, findMedianSortedArrays([1, 2], [3, 4]))
+
+    def test_exampleThree(self):
+        self.assertEqual(0.00000, findMedianSortedArrays([0, 0], [0, 0]))
+
+    def test_exampleFour(self):
+        self.assertEqual(1.00000, findMedianSortedArrays([], [1]))
+
+    def test_exampleFive(self):
+        self.assertEqual(2.00000, findMedianSortedArrays([2], []))
 
 
 if __name__ == '__main__':

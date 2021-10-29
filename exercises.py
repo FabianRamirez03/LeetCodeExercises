@@ -1,4 +1,6 @@
+# 0
 class Palindrome:
+    # Reference: https://leetcode.com/problems/palindrome-number/
     def isPalindrome(self, s: str) -> bool:
         s = s.casefold()
         s = self.removeNonAlNum(s)
@@ -19,7 +21,9 @@ class Palindrome:
         return result
 
 
+# 1
 class TwoSum:
+    # Reference: https://leetcode.com/problems/two-sum/
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         cont = 0
         for num in nums:
@@ -36,6 +40,8 @@ class TwoSum:
                 cont += 1
 
 
+# 2
+# Reference: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 def maxProfit(prices: list[int]) -> int:
     inf = 9999999999
     h1 = s1 = h2 = s2 = -inf
@@ -47,6 +53,7 @@ def maxProfit(prices: list[int]) -> int:
     return max(0, s1, s2)
 
 
+# 3
 def palindrome(x: int) -> bool:
     x = str(x)
     length = len(x)
@@ -62,6 +69,8 @@ def palindrome(x: int) -> bool:
     return result
 
 
+# 4
+# Reference: https://leetcode.com/problems/roman-to-integer/
 def romanToInt(s: str):
     nums = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
     s = s[::-1]
@@ -84,6 +93,8 @@ def romanToInt(s: str):
     return result
 
 
+# 5
+# Reference: https://leetcode.com/problems/reverse-integer/
 def reverseInteger(x: int) -> int:
     sign = 1
     if x < 0:
@@ -92,3 +103,12 @@ def reverseInteger(x: int) -> int:
     return rst if -(2 ** 31) - 1 < rst < 2 ** 31 else 0
 
 
+# 6
+# Reference: https://leetcode.com/problems/median-of-two-sorted-arrays/
+def findMedianSortedArrays(list1: list[int], list2: list[int]) -> float:
+    total_list = (list1 + list2)
+    total_list.sort()
+    if len(total_list) % 2 == 0:
+        return (total_list[len(total_list) // 2] + total_list[(len(total_list) // 2) - 1]) / 2
+    else:
+        return total_list[len(total_list) // 2]
