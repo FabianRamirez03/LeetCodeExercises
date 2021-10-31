@@ -109,5 +109,22 @@ class LengthOfLongestSubstringTesting(unittest.TestCase):
         self.assertEqual(expected, lengthOfLongestSubstring(string))
 
 
+class LongestCommonPrefix(unittest.TestCase):
+
+    # Rerence: https://leetcode.com/problems/longest-common-prefix/
+
+    @parameterized.expand([
+        ['fl', ["flower", "flow", "flight"]],
+        ['', ["dog","racecar","car"]],
+        ['flower', ["flower", "flower", "flower"]],
+        ['flower', ["flower", "flower", "flower", 'flowers']],
+        ['', ["flower", "flower", "flower", 'notFlowers']],
+        ['a', ['a']],
+        ['a', ["ab", "a"]]
+    ])
+    def test_LongestCommonPrefix(self, expected, strs):
+        self.assertEqual(expected, Longest_Common_Prefix(strs))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -126,3 +126,23 @@ def lengthOfLongestSubstring(s: str) -> int:
             maxLength = max(maxLength, index - start + 1)
         usedChar[char] = index
     return maxLength
+
+
+# 8
+# Reference: https://leetcode.com/problems/longest-common-prefix
+
+def Longest_Common_Prefix(strs: list[str]) -> str:
+    if len(strs) == 1:
+        return strs[0]
+    minWord = min(strs, key=len)
+    strs.remove(minWord)
+    for cont in range(len(minWord), 0, -1):
+        for word in strs:
+            if not minWord == word[:len(minWord)]:
+                minWord = minWord[:len(minWord)-1]
+                break
+    return minWord
+
+
+
+print(Longest_Common_Prefix(["flower", "flower", "flower", 'notFlowers']))
