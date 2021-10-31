@@ -126,5 +126,3 @@ def lengthOfLongestSubstring(s: str) -> int:
             maxLength = max(maxLength, index - start + 1)
         usedChar[char] = index
     return maxLength
-
-print(lengthOfLongestSubstring("asjrgapa"))

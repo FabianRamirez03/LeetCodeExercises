@@ -1,135 +1,112 @@
 import unittest
 from exercises import *
+from parameterized import parameterized
 
 
 class PalindromeTesting(unittest.TestCase):
     # Reference: https://leetcode.com/problems/palindrome-number/
-    def test_isEvenPalindrome(self):
+    @parameterized.expand([
+        ['123321'],
+        ['12321'],
+        ['1']
+    ])
+    def test_assertTruePalindrome(self, num):
         pal = Palindrome()
-        self.assertTrue(pal.isPalindrome('123321'))
+        self.assertTrue(pal.isPalindrome(num))
 
-    def test_isOddPalindrome(self):
-        pal = Palindrome()
-        self.assertTrue(pal.isPalindrome('12321'))
+    @parameterized.expand([
+        ['123456'],
+        ['123213'],
+        ['98']
 
-    def test_notEvenPalindrome(self):
+    ])
+    def test_assertFalsePalindrome(self, num):
         pal = Palindrome()
-        self.assertFalse(pal.isPalindrome('123456'))
-
-    def test_notOddPalindrome(self):
-        pal = Palindrome()
-        self.assertFalse(pal.isPalindrome('12345'))
+        self.assertFalse(pal.isPalindrome(num))
 
 
 class TwoSumTesting(unittest.TestCase):
     # Reference: https://leetcode.com/problems/two-sum/
-    def test_exampleOne(self):
-        two_sum = TwoSum()
-        self.assertEqual([0, 1], two_sum.twoSum([2, 7, 11, 15], 9))
+    @parameterized.expand([
+        [[0, 1], [2, 7, 11, 15], 9],
+        [[1, 2], [3, 2, 4], 6],
+        [[0, 1], [3, 4], 7]
 
-    def test_exampleTwo(self):
+    ])
+    def test_two_sum(self, result, test_list, target):
         two_sum = TwoSum()
-        self.assertEqual([1, 2], two_sum.twoSum([3, 2, 4], 6))
-
-    def test_exampleThree(self):
-        two_sum = TwoSum()
-        self.assertEqual([0, 1], two_sum.twoSum([3, 4], 7))
+        self.assertEqual(result, two_sum.twoSum(test_list, target))
 
 
 class BestTimeToBuyTesting(unittest.TestCase):
 
     # Reference: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 
-    def test_exampleOne(self):
-        self.assertEqual(6, maxProfit([3, 3, 5, 0, 0, 3, 1, 4]))
-
-    def test_exampleOTwo(self):
-        self.assertEqual(4, maxProfit([1, 2, 3, 4, 5]))
-
-    def test_exampleOThree(self):
-        self.assertEqual(0, maxProfit([7, 6, 4, 3, 1]))
-
-    def test_exampleOFour(self):
-        self.assertEqual(0, maxProfit([1]))
+    @parameterized.expand([
+        [6, [3, 3, 5, 0, 0, 3, 1, 4]],
+        [4, [1, 2, 3, 4, 5]],
+        [0, [7, 6, 4, 3, 1]],
+        [0, [1]]
+    ])
+    def test_best_time_to_buy(self, expected, test_list):
+        self.assertEqual(expected, maxProfit(test_list))
 
 
 class RomanToIntTesting(unittest.TestCase):
-
     # Reference: https://leetcode.com/problems/roman-to-integer/
 
-    def test_exampleOne(self):
-        self.assertEqual(3, romanToInt('III'))
-
-    def test_exampleTwo(self):
-        self.assertEqual(4, romanToInt('IV'))
-
-    def test_exampleThree(self):
-        self.assertEqual(9, romanToInt('IX'))
-
-    def test_exampleFour(self):
-        self.assertEqual(58, romanToInt('LVIII'))
-
-    def test_exampleFive(self):
-        self.assertEqual(1994, romanToInt('MCMXCIV'))
+    @parameterized.expand([
+        [3, 'III'],
+        [4, 'IV'],
+        [9, 'IX'],
+        [58, 'LVIII'],
+        [1994, 'MCMXCIV']
+    ])
+    def test_romanToInt(self, decimal, roman):
+        self.assertEqual(decimal, romanToInt(roman))
 
 
 class ReverseIntegerTesting(unittest.TestCase):
     # Reference: https://leetcode.com/problems/reverse-integer/
-    def test_exampleOne(self):
-        self.assertEqual(321, reverseInteger(123))
-
-    def test_exampleTwo(self):
-        self.assertEqual(-321, reverseInteger(-123))
-
-    def test_exampleThree(self):
-        self.assertEqual(21, reverseInteger(120))
-
-    def test_exampleFour(self):
-        self.assertEqual(0, reverseInteger(0))
+    @parameterized.expand([
+        [321, 123],
+        [-321, -123],
+        [21, 120],
+        [0, 0]
+    ])
+    def test_reverseInteger(self, expected, num):
+        self.assertEqual(expected, reverseInteger(num))
 
 
 class MedianSortedArrays(unittest.TestCase):
     # Reference: https://leetcode.com/problems/median-of-two-sorted-arrays/
-    def test_exampleOne(self):
-        self.assertEqual(2.00000, findMedianSortedArrays([1, 3], [2]))
 
-    def test_exampleTwo(self):
-        self.assertEqual(2.50000, findMedianSortedArrays([1, 2], [3, 4]))
-
-    def test_exampleThree(self):
-        self.assertEqual(0.00000, findMedianSortedArrays([0, 0], [0, 0]))
-
-    def test_exampleFour(self):
-        self.assertEqual(1.00000, findMedianSortedArrays([], [1]))
-
-    def test_exampleFive(self):
-        self.assertEqual(2.00000, findMedianSortedArrays([2], []))
+    @parameterized.expand([
+        [2.00000, [1, 3], [2]],
+        [2.50000, [1, 2], [3, 4]],
+        [0.00000, [0, 0], [0, 0]],
+        [1.00000, [], [1]],
+        [2.00000, [2], []]
+    ])
+    def test_MedianSortedArray(self, result, list1, list2):
+        self.assertEqual(result, findMedianSortedArrays(list1, list2))
 
 
 class LengthOfLongestSubstringTesting(unittest.TestCase):
 
     # Reference: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
-    def test_exampleOne(self):
-        self.assertEqual(3, lengthOfLongestSubstring('abcabcbb'))
-
-    def test_exampleTwo(self):
-        self.assertEqual(1, lengthOfLongestSubstring('bbbbb'))
-
-    def test_exampleThree(self):
-        self.assertEqual(3, lengthOfLongestSubstring('pwwkew'))
-
-    def test_exampleFour(self):
-        self.assertEqual(0, lengthOfLongestSubstring(''))
-
-    def test_exampleFive(self):
-        self.assertEqual(1, lengthOfLongestSubstring(' '))
-
-    def test_exampleSix(self):
-        self.assertEqual(2, lengthOfLongestSubstring('aab'))
-
-    def test_exampleSeven(self):
-        self.assertEqual(3, lengthOfLongestSubstring('dvdf'))
+    @parameterized.expand([
+        [3, 'abcabcbb'],
+        [1, 'bbbbb'],
+        [3, 'pwwkew'],
+        [0, ''],
+        [1, ' '],
+        [2, 'aab'],
+        [3, 'dvdf']
+    ])
+    def test_LongestSubString(self, expected, string):
+        self.assertEqual(expected, lengthOfLongestSubstring(string))
 
 
 if __name__ == '__main__':
