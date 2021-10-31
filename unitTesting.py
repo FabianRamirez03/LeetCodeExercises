@@ -106,5 +106,31 @@ class MedianSortedArrays(unittest.TestCase):
         self.assertEqual(2.00000, findMedianSortedArrays([2], []))
 
 
+class LengthOfLongestSubstringTesting(unittest.TestCase):
+
+    # Reference: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+    def test_exampleOne(self):
+        self.assertEqual(3, lengthOfLongestSubstring('abcabcbb'))
+
+    def test_exampleTwo(self):
+        self.assertEqual(1, lengthOfLongestSubstring('bbbbb'))
+
+    def test_exampleThree(self):
+        self.assertEqual(3, lengthOfLongestSubstring('pwwkew'))
+
+    def test_exampleFour(self):
+        self.assertEqual(0, lengthOfLongestSubstring(''))
+
+    def test_exampleFive(self):
+        self.assertEqual(1, lengthOfLongestSubstring(' '))
+
+    def test_exampleSix(self):
+        self.assertEqual(2, lengthOfLongestSubstring('aab'))
+
+    def test_exampleSeven(self):
+        self.assertEqual(3, lengthOfLongestSubstring('dvdf'))
+
+
 if __name__ == '__main__':
     unittest.main()

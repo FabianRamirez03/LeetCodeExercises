@@ -112,3 +112,19 @@ def findMedianSortedArrays(list1: list[int], list2: list[int]) -> float:
         return (total_list[len(total_list) // 2] + total_list[(len(total_list) // 2) - 1]) / 2
     else:
         return total_list[len(total_list) // 2]
+
+
+# 7
+# Reference: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+def lengthOfLongestSubstring(s: str) -> int:
+    start = maxLength = 0
+    usedChar = {}
+    for index, char in enumerate(s):
+        if char in usedChar and start <= usedChar[char]:
+            start = usedChar[char] + 1
+        else:
+            maxLength = max(maxLength, index - start + 1)
+        usedChar[char] = index
+    return maxLength
+
+print(lengthOfLongestSubstring("asjrgapa"))
