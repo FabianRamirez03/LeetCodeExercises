@@ -1,3 +1,42 @@
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    def printFromHead(self):
+        pivot = self
+        while pivot is not None:
+            print(pivot.val)
+            pivot = pivot.next
+
+
+class LinkedList:
+    def __init__(self):
+        self.head: ListNode = None
+
+    def addAtEnd(self, node: ListNode):
+        pivot = self.head
+        if pivot is None:
+            self.head = node
+        else:
+            while pivot.next is not None:
+                pivot = pivot.next
+            pivot.next = node
+
+    def fillFromList(self, normal_list: list):
+        while normal_list:
+            node = ListNode(val=normal_list[0])
+            self.addAtEnd(node)
+            normal_list = normal_list[1:]
+
+    def printList(self):
+        pivot = self.head
+        while pivot is not None:
+            print(pivot.val)
+            pivot = pivot.next
+
+
 # 0
 class Palindrome:
     # Reference: https://leetcode.com/problems/palindrome-number/
@@ -139,10 +178,43 @@ def Longest_Common_Prefix(strs: list[str]) -> str:
     for cont in range(len(minWord), 0, -1):
         for word in strs:
             if not minWord == word[:len(minWord)]:
-                minWord = minWord[:len(minWord)-1]
+                minWord = minWord[:len(minWord) - 1]
                 break
     return minWord
 
 
-
-print(Longest_Common_Prefix(["flower", "flower", "flower", 'notFlowers']))
+# 9
+# Reference: https://leetcode.com/problems/merge-two-sorted-lists/
+def mergeTwoLists(l1: ListNode, l2: ListNode):
+    head = ListNode()
+    pivot = head
+    if not l1 and not l2:
+        return head.next
+    while l1 and l2:
+        new_node = ListNode()
+        if l1.val < l2.val:
+            pivot.val = l1.val
+            l1 = l1.next
+            pivot.next = new_node
+        else:
+            pivot.val = l2.val
+            l2 = l2.next
+            pivot.next = new_node
+        pivot = pivot.next
+    if l1 is not None:
+        while l1:
+            new_node = ListNode()
+            pivot.val = l1.val
+            l1 = l1.next
+            if l1:
+                pivot.next = new_node
+                pivot = pivot.next
+    else:
+        while l2:
+            new_node = ListNode()
+            pivot.val = l2.val
+            l2 = l2.next
+            if l2:
+                pivot.next = new_node
+                pivot = pivot.next
+    return head

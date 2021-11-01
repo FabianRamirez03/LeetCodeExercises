@@ -115,7 +115,7 @@ class LongestCommonPrefix(unittest.TestCase):
 
     @parameterized.expand([
         ['fl', ["flower", "flow", "flight"]],
-        ['', ["dog","racecar","car"]],
+        ['', ["dog", "racecar", "car"]],
         ['flower', ["flower", "flower", "flower"]],
         ['flower', ["flower", "flower", "flower", 'flowers']],
         ['', ["flower", "flower", "flower", 'notFlowers']],
@@ -124,6 +124,20 @@ class LongestCommonPrefix(unittest.TestCase):
     ])
     def test_LongestCommonPrefix(self, expected, strs):
         self.assertEqual(expected, Longest_Common_Prefix(strs))
+
+
+class mergeTwoSortedLists(unittest.TestCase):
+
+    # Reference: https://leetcode.com/problems/merge-two-sorted-lists/
+
+    @parameterized.expand([
+        [[1, 1, 2, 3, 4, 4], [1, 2, 4], [1, 3, 4]],
+        [[], [], []],
+        [[0], [], [0]]
+
+    ])
+    def test_mergeTwoList(self, expected, l1, l2):
+        self.assertEqual(expected, mergeTwoLists(l1, l2))
 
 
 if __name__ == '__main__':
