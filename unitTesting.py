@@ -126,18 +126,18 @@ class LongestCommonPrefix(unittest.TestCase):
         self.assertEqual(expected, Longest_Common_Prefix(strs))
 
 
-class mergeTwoSortedLists(unittest.TestCase):
 
-    # Reference: https://leetcode.com/problems/merge-two-sorted-lists/
+class DetectCapitalUse(unittest.TestCase):
+    # Reference: https://leetcode.com/problems/detect-capital/
 
     @parameterized.expand([
-        [[1, 1, 2, 3, 4, 4], [1, 2, 4], [1, 3, 4]],
-        [[], [], []],
-        [[0], [], [0]]
-
+        ["USA",      True],
+        ["FlaG",     False],
+        ["leetcode", True],
+        ["Google",   True]
     ])
-    def test_mergeTwoList(self, expected, l1, l2):
-        self.assertEqual(expected, mergeTwoLists(l1, l2))
+    def test_detectCapitalUse(self, word, result):
+        self.assertEqual(result, detectCapitalUse(word))
 
 
 if __name__ == '__main__':
