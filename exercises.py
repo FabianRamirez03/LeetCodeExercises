@@ -11,11 +11,11 @@ class Palindrome:
         s_copy = s
         for char in s_copy:
             if not char.isalnum():
-                s = s.replace(char, '')
+                s = s.replace(char, "")
         return s
 
     def invertString(self, s: str) -> str:
-        result = ''
+        result = ""
         for char in s:
             result = char + result
         return result
@@ -72,7 +72,7 @@ def palindrome(x: int) -> bool:
 # 4
 # Reference: https://leetcode.com/problems/roman-to-integer/
 def romanToInt(s: str):
-    nums = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    nums = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
     s = s[::-1]
     cap = 0
     temp: str = s[0]
@@ -80,7 +80,7 @@ def romanToInt(s: str):
     result: int = 0
     for i in s:
         if cap == 4:
-            return 'Numero no válido'
+            return "Numero no válido"
         if temp != i:
             if nums[temp] < nums[i]:
                 sign = 1
@@ -100,16 +100,18 @@ def reverseInteger(x: int) -> int:
     if x < 0:
         sign = -1
     rst = sign * int(str(abs(x))[::-1])
-    return rst if -(2 ** 31) - 1 < rst < 2 ** 31 else 0
+    return rst if -(2**31) - 1 < rst < 2**31 else 0
 
 
 # 6
 # Reference: https://leetcode.com/problems/median-of-two-sorted-arrays/
 def findMedianSortedArrays(list1: list[int], list2: list[int]) -> float:
-    total_list = (list1 + list2)
+    total_list = list1 + list2
     total_list.sort()
     if len(total_list) % 2 == 0:
-        return (total_list[len(total_list) // 2] + total_list[(len(total_list) // 2) - 1]) / 2
+        return (
+            total_list[len(total_list) // 2] + total_list[(len(total_list) // 2) - 1]
+        ) / 2
     else:
         return total_list[len(total_list) // 2]
 
@@ -131,6 +133,7 @@ def lengthOfLongestSubstring(s: str) -> int:
 # 8
 # Reference: https://leetcode.com/problems/longest-common-prefix
 
+
 def Longest_Common_Prefix(strs: list[str]) -> str:
     if len(strs) == 1:
         return strs[0]
@@ -138,14 +141,15 @@ def Longest_Common_Prefix(strs: list[str]) -> str:
     strs.remove(minWord)
     for cont in range(len(minWord), 0, -1):
         for word in strs:
-            if not minWord == word[:len(minWord)]:
-                minWord = minWord[:len(minWord) - 1]
+            if not minWord == word[: len(minWord)]:
+                minWord = minWord[: len(minWord) - 1]
                 break
     return minWord
 
 
 # 9
 # Reference: https://leetcode.com/problems/detect-capital/
+
 
 def detectCapitalUse(word: str) -> bool:
     if word == word.upper():
@@ -156,3 +160,15 @@ def detectCapitalUse(word: str) -> bool:
         return True
     else:
         return False
+
+
+# 10
+# Reference: https://leetcode.com/problems/length-of-last-word/
+def lengthOfLastWord(string: str) -> int:
+    words_list = string.split(" ")
+    clean_words_list = []
+    for item in words_list:
+        if item != "":
+            clean_words_list.append(item)
+    clean_words_list_length = len(clean_words_list)
+    return len(clean_words_list[clean_words_list_length - 1])
