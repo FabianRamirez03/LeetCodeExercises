@@ -172,3 +172,12 @@ def lengthOfLastWord(string: str) -> int:
             clean_words_list.append(item)
     clean_words_list_length = len(clean_words_list)
     return len(clean_words_list[clean_words_list_length - 1])
+
+# 11 
+# Reference: https://leetcode.com/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
+def mergeSortedArray(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+    nums1 = nums1[:m]
+    nums2 = nums2[:n]
+    nums1 += nums2
+    nums1.sort()
+    return nums1

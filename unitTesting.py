@@ -137,6 +137,20 @@ class TestLengthOfLastWord(unittest.TestCase):
     def test_length_of_last_word(self, string, result):
         self.assertEqual(result, lengthOfLastWord(string))
 
+class TestMergeSortedArray(unittest.TestCase):
+    # Reference: https://leetcode.com/problems/detect-capital/
+
+    @parameterized.expand(
+        [
+            [[1,2,3,0,0,0], 3, [2,5,6], 3, [1,2,2,3,5,6]],
+            [[1], 1, [], 0, [1]],
+            [[0], 0, [1], 1, [1]],
+            [[1,6,7], 2, [2,4], 2, [1,2,4,6]],
+        ]
+    )
+    def test_length_of_last_word(self, nums1, nums2, m, n, result):
+        self.assertEqual(result, mergeSortedArray(nums1, nums2, m, n))
+
 
 if __name__ == "__main__":
     unittest.main()
