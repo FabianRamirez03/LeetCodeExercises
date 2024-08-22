@@ -173,7 +173,8 @@ def lengthOfLastWord(string: str) -> int:
     clean_words_list_length = len(clean_words_list)
     return len(clean_words_list[clean_words_list_length - 1])
 
-# 11 
+
+# 11
 # Reference: https://leetcode.com/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
 def mergeSortedArray(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
     nums1 = nums1[:m]
@@ -181,3 +182,32 @@ def mergeSortedArray(nums1: list[int], m: int, nums2: list[int], n: int) -> None
     nums1 += nums2
     nums1.sort()
     return nums1
+
+
+# 12
+# Reference https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1?page=1&difficulty=Basic&sortBy=submissions
+def doUnion(arr1, arr2):
+    result = []
+
+    while len(arr1) > 0 or len(arr2) > 0:
+        if len(arr1) > 0:
+            if arr1[0] not in result:
+                result.append(arr1.pop(0))
+            else:
+                arr1.pop(0)
+        if len(arr2) > 0:
+            if arr2[0] not in result:
+                result.append(arr2.pop(0))
+            else:
+                arr2.pop(0)
+    return len(result)
+
+
+# 13
+# Reference https://www.geeksforgeeks.org/problems/third-largest-element/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+def thirdLargest(arr):
+    if len(arr) < 3:
+        return -1
+    else:
+        arr.sort()
+        return arr[len(arr) - 3]

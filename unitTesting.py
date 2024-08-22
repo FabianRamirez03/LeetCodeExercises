@@ -137,19 +137,50 @@ class TestLengthOfLastWord(unittest.TestCase):
     def test_length_of_last_word(self, string, result):
         self.assertEqual(result, lengthOfLastWord(string))
 
+
 class TestMergeSortedArray(unittest.TestCase):
     # Reference: https://leetcode.com/problems/detect-capital/
 
     @parameterized.expand(
         [
-            [[1,2,3,0,0,0], 3, [2,5,6], 3, [1,2,2,3,5,6]],
+            [[1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3, [1, 2, 2, 3, 5, 6]],
             [[1], 1, [], 0, [1]],
             [[0], 0, [1], 1, [1]],
-            [[1,6,7], 2, [2,4], 2, [1,2,4,6]],
+            [[1, 6, 7], 2, [2, 4], 2, [1, 2, 4, 6]],
         ]
     )
     def test_length_of_last_word(self, nums1, nums2, m, n, result):
         self.assertEqual(result, mergeSortedArray(nums1, nums2, m, n))
+
+
+class TestUnionOfTwoArrays(unittest.TestCase):
+    # Reference https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1?page=1&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[85, 25, 1, 32, 54, 6], [85, 2], 7],
+            [[1, 2, 3, 4, 5], [1, 2, 3], 5],
+            [[1, 2, 1, 1, 2], [2, 2, 1, 2, 1], 2],
+            [[240, 96, 415], [415, 775, 215, 152, 594, 428, 908, 357, 539, 998], 12],
+        ]
+    )
+    def test_length_of_last_word(self, nums1, nums2, result):
+        self.assertEqual(result, doUnion(nums1, nums2))
+
+
+class TestThirdLargest(unittest.TestCase):
+    # Reference https://www.geeksforgeeks.org/problems/third-largest-element/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[85, 25, 1, 32, 54, 6], 32],
+            [[1, 21], -1],
+            [[5, 5, 5], 5],
+            [[415, 775, 215, 152, 594, 428, 908, 357, 539, 998], 775],
+        ]
+    )
+    def test_thirdLargest(self, arr, result):
+        self.assertEqual(result, thirdLargest(arr))
 
 
 if __name__ == "__main__":
