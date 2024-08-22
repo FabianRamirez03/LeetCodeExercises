@@ -211,3 +211,23 @@ def thirdLargest(arr):
     else:
         arr.sort()
         return arr[len(arr) - 3]
+
+
+# 14
+# Reference https://www.geeksforgeeks.org/problems/find-position-of-set-bit3706/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+def findPositionSetBit(N):
+    error = -1
+    binN = "{0:b}".format(N)
+    binN = list(binN[::-1])
+    if "1" not in binN:
+        return error
+    else:
+        index = binN.index("1")
+        binN.remove("1")
+        if "1" not in binN:
+            return index + 1
+        else:
+            return error
+
+
+findPositionSetBit(11)

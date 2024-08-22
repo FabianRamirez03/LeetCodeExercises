@@ -183,5 +183,18 @@ class TestThirdLargest(unittest.TestCase):
         self.assertEqual(result, thirdLargest(arr))
 
 
+class TestFindPositionSetBit(unittest.TestCase):
+    # Reference https://www.geeksforgeeks.org/problems/third-largest-element/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [2, 2],
+            [5, -1],
+        ]
+    )
+    def test_thirdLargest(self, arr, result):
+        self.assertEqual(result, findPositionSetBit(arr))
+
+
 if __name__ == "__main__":
     unittest.main()
