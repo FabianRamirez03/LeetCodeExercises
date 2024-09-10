@@ -196,5 +196,18 @@ class TestFindPositionSetBit(unittest.TestCase):
         self.assertEqual(result, findPositionSetBit(arr))
 
 
+class TestMissingNumber(unittest.TestCase):
+    # Reference https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1?page=1&category=Arrays&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [5, [1, 2, 3, 5], 4],
+            [2, [1], 2],
+        ]
+    )
+    def test_MissingNumber(self, n, arr, result):
+        self.assertEqual(result, missingNumber(n, arr))
+
+
 if __name__ == "__main__":
     unittest.main()

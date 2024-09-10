@@ -230,4 +230,11 @@ def findPositionSetBit(N):
             return error
 
 
-findPositionSetBit(11)
+# 15
+# Reference https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1?page=1&category=Arrays&sortBy=submissions
+def missingNumber(n, arr):
+    target_set = {i for i in range(1, n + 1)}
+    arr_set = set(arr)
+    diff = target_set.difference(arr_set)
+
+    return diff.pop()
