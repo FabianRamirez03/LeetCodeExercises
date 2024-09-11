@@ -235,5 +235,18 @@ class TestTransitionPoint(unittest.TestCase):
         self.assertEqual(result, transitionPoint(arr, n))
 
 
+class TestArrayDuplicates(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/find-duplicates-in-an-array/1?page=1&category=Arrays&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[0, 3, 1, 2], 4, [-1]],
+            [[2, 3, 1, 2, 3], 5, [2, 3]],
+        ]
+    )
+    def test_arrayDuplicates(self, arr, n, result):
+        self.assertEqual(result, arrayDuplicates(n, arr))
+
+
 if __name__ == "__main__":
     unittest.main()

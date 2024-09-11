@@ -255,3 +255,18 @@ def transitionPoint(arr, n):
         return arr.index(1)
     except ValueError:
         return -1
+
+
+def arrayDuplicates(n: int, arr: list[int]) -> list[int]:
+    result = []
+    for i in range(0, n):
+        try:
+            arr.remove(i)
+        except:
+            continue
+
+    result = list(set(arr))
+    result.sort()
+    if len(result) == 0:
+        return [-1]
+    return result
