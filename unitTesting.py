@@ -222,5 +222,18 @@ class TestFindExtra(unittest.TestCase):
         self.assertEqual(result, findExtra(n, a, b))
 
 
+class TestTransitionPoint(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/find-transition-point-1587115620/1?page=1&category=Arrays&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[0, 0, 0, 1, 1], 5, 3],
+            [[0, 0, 0, 0], 4, -1],
+        ]
+    )
+    def test_transitionPoint(self, arr, n, result):
+        self.assertEqual(result, transitionPoint(arr, n))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -248,5 +248,10 @@ def findExtra(n, a, b):
     return a.index(diff.pop())
 
 
-# findExtra(7, [2, 4, 6, 8, 9, 10, 12], [2, 4, 6, 8, 10, 12])
-# findExtra(6, [3, 5, 7, 8, 11, 13], [3, 5, 7, 11, 13])
+# 17
+# Reference https://www.geeksforgeeks.org/problems/find-transition-point-1587115620/1?page=1&category=Arrays&sortBy=submissions
+def transitionPoint(arr, n):
+    try:
+        return arr.index(1)
+    except ValueError:
+        return -1
