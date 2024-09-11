@@ -257,6 +257,8 @@ def transitionPoint(arr, n):
         return -1
 
 
+# 18
+# Reference https://www.geeksforgeeks.org/problems/find-duplicates-in-an-array/1?page=1&category=Arrays&sortBy=submissions
 def arrayDuplicates(n: int, arr: list[int]) -> list[int]:
     result = []
     for i in range(0, n):
@@ -270,3 +272,20 @@ def arrayDuplicates(n: int, arr: list[int]) -> list[int]:
     if len(result) == 0:
         return [-1]
     return result
+
+
+# 19
+# Reference https://www.geeksforgeeks.org/problems/move-all-zeroes-to-end-of-array0751/1?page=1&category=Arrays&sortBy=submissions
+def pushZerosToEnd(arr, n):
+    non_zero_index = 0
+
+    for i in range(n):
+        if arr[i] != 0:
+            arr[non_zero_index] = arr[i]
+            non_zero_index += 1
+
+    while non_zero_index < n:
+        arr[non_zero_index] = 0
+        non_zero_index += 1
+
+    return arr

@@ -248,5 +248,19 @@ class TestArrayDuplicates(unittest.TestCase):
         self.assertEqual(result, arrayDuplicates(n, arr))
 
 
+class TestPushZerosToEnd(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/move-all-zeroes-to-end-of-array0751/1?page=1&category=Arrays&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[3, 5, 0, 0, 4], 5, [3, 5, 4, 0, 0]],
+            [[0, 0, 0, 4], 4, [4, 0, 0, 0]],
+            [[10, 2, 4], 3, [10, 2, 4]],
+        ]
+    )
+    def test_pushZerosToEnd(self, arr, n, result):
+        self.assertEqual(result, pushZerosToEnd(arr, n))
+
+
 if __name__ == "__main__":
     unittest.main()
