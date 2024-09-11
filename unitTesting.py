@@ -209,5 +209,18 @@ class TestMissingNumber(unittest.TestCase):
         self.assertEqual(result, missingNumber(n, arr))
 
 
+class TestFindExtra(unittest.TestCase):
+    # Reference https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1?page=1&category=Arrays&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [7, [2, 4, 6, 8, 9, 10, 12], [2, 4, 6, 8, 10, 12], 4],
+            [6, [3, 5, 7, 8, 11, 13], [3, 5, 7, 11, 13], 3],
+        ]
+    )
+    def test_FindExtra(self, n, a, b, result):
+        self.assertEqual(result, findExtra(n, a, b))
+
+
 if __name__ == "__main__":
     unittest.main()

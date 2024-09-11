@@ -238,3 +238,15 @@ def missingNumber(n, arr):
     diff = target_set.difference(arr_set)
 
     return diff.pop()
+
+
+# 16
+# Reference https://www.geeksforgeeks.org/problems/index-of-an-extra-element/1?page=1&category=Arrays&sortBy=submissions
+def findExtra(n, a, b):
+    a_set, b_set = set(a), set(b)
+    diff = a_set.difference(b_set)
+    return a.index(diff.pop())
+
+
+# findExtra(7, [2, 4, 6, 8, 9, 10, 12], [2, 4, 6, 8, 10, 12])
+# findExtra(6, [3, 5, 7, 8, 11, 13], [3, 5, 7, 11, 13])
