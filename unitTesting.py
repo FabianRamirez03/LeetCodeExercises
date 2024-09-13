@@ -290,5 +290,19 @@ class TestMajorityElement(unittest.TestCase):
         self.assertEqual(result, majorityElement(arr))
 
 
+class TestMaximumSumSubarray(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+
+    @parameterized.expand(
+        [
+            [2, [100, 200, 300, 400], 4, 700],
+            [4, [100, 200, 300, 400], 4, 1000],
+            [4, [1, 4, 2, 10, 23, 3, 1, 0, 20], 9, 39],
+        ]
+    )
+    def test_maximumSumSubarray(self, K, Arr, N, result):
+        self.assertEqual(result, maximumSumSubarray(K, Arr, N))
+
+
 if __name__ == "__main__":
     unittest.main()

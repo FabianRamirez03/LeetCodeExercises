@@ -323,3 +323,24 @@ def majorityElement(arr):
         return major_num
     else:
         return -1
+
+
+# 22
+# https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+
+
+def maximumSumSubarray(K, Arr, N):
+    if K > N:
+        print("invalid K")
+        return -1
+
+    # first sum
+    pivot = 0
+    for i in range(K):
+        pivot += Arr[i]
+    temp = pivot
+    for i in range(K, N):
+        temp += Arr[i] - Arr[i - K]
+        if pivot < temp:
+            pivot = temp
+    return pivot
