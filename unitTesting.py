@@ -262,5 +262,19 @@ class TestPushZerosToEnd(unittest.TestCase):
         self.assertEqual(result, pushZerosToEnd(arr, n))
 
 
+class TestGetMinMax(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1?page=1&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[3, 2, 1, 56, 10000, 167], [1, 10000]],
+            [[1, 345, 234, 21, 56789], [1, 56789]],
+            [[56789], [56789, 56789]],
+        ]
+    )
+    def test_get_min_max(self, arr, result):
+        self.assertEqual(result, get_min_max(arr))
+
+
 if __name__ == "__main__":
     unittest.main()

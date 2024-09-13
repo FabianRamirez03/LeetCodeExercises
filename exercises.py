@@ -289,3 +289,16 @@ def pushZerosToEnd(arr, n):
         non_zero_index += 1
 
     return arr
+
+
+# 20
+# Reference https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1?page=1&difficulty=Basic&sortBy=submissions
+def get_min_max(arr):
+    max = float("-inf")
+    min = float("inf")
+    for i in arr:
+        if i > max:
+            max = i
+        if i < min:
+            min = i
+    return [min, max]
