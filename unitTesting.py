@@ -276,5 +276,19 @@ class TestGetMinMax(unittest.TestCase):
         self.assertEqual(result, get_min_max(arr))
 
 
+class TestMajorityElement(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1?page=1&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[3, 1, 3, 3, 2], 3],
+            [[7], 7],
+            [[2, 13], -1],
+        ]
+    )
+    def test_majorityElement(self, arr, result):
+        self.assertEqual(result, majorityElement(arr))
+
+
 if __name__ == "__main__":
     unittest.main()

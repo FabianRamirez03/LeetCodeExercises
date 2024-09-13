@@ -302,3 +302,24 @@ def get_min_max(arr):
         if i < min:
             min = i
     return [min, max]
+
+
+# 21
+# https://www.geeksforgeeks.org/problems/majority-element-1587115620/1?page=1&category=Arrays&difficulty=Medium&sortBy=submissions
+def majorityElement(arr):
+    results = {}
+    major_num = None
+    pivot = float("-inf")
+    for i in arr:
+        if i not in results:
+            results[i] = 1
+        else:
+            results[i] += 1
+    for key in results:
+        if results[key] > pivot:
+            pivot = results[key]
+            major_num = key
+    if results[major_num] > len(arr) / 2:
+        return major_num
+    else:
+        return -1
