@@ -304,5 +304,32 @@ class TestMaximumSumSubarray(unittest.TestCase):
         self.assertEqual(result, maximumSumSubarray(K, Arr, N))
 
 
+class TestCountDistinct(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+
+    @parameterized.expand(
+        [
+            [[1, 2, 1, 3, 4, 2, 3], 7, 4, [3, 4, 4, 3]],
+            [[4, 1, 1], 3, 2, [2, 1]],
+        ]
+    )
+    def test_countDistinct(self, A, N, K, result):
+        self.assertEqual(result, countDistinct(A, N, K))
+
+
+class GetSecondLargest(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/second-largest3735/1?page=1&difficulty=Easy&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[12, 35, 1, 10, 34, 1], 34],
+            [[10, 5, 10], 5],
+            [[10, 10, 10], -1],
+        ]
+    )
+    def test_getSecondLargest(self, arr, result):
+        self.assertEqual(result, getSecondLargest(arr))
+
+
 if __name__ == "__main__":
     unittest.main()
