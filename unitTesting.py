@@ -331,5 +331,19 @@ class GetSecondLargest(unittest.TestCase):
         self.assertEqual(result, getSecondLargest(arr))
 
 
+class ArrayLeaders(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1?page=1&difficulty=Easy&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[16, 17, 4, 3, 5, 2], [17, 5, 2]],
+            [[10, 4, 2, 4, 1], [10, 4, 4, 1]],
+            [[5, 10, 20, 40], [40]],
+        ]
+    )
+    def test_getSecondLargest(self, arr, result):
+        self.assertEqual(result, array_leaders(arr))
+
+
 if __name__ == "__main__":
     unittest.main()

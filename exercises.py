@@ -666,3 +666,32 @@ def getSecondLargest(arr):
             result = arr[i]
             break
     return result
+
+
+# 26
+# https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1?page=1&difficulty=Easy&sortBy=submissions
+# The usage of max() is making to have a Big O complexity of O(n^2)
+def array_leaders_first_solution(arr):
+    result = []
+    while len(arr) > 1:
+        if arr[0] >= max(arr[1:]):
+            result.append(arr[0])
+        arr = arr[1:]
+    result.append(arr[0])
+    return result
+
+
+def array_leaders(arr):
+    max_right = arr[-1]
+    result = []
+    result.append(max_right)
+
+    for i in range(len(arr) - 2, -1, -1):
+        if arr[i] >= max_right:
+            result.append(arr[i])
+            max_right = arr[i]
+
+    return result[::-1]
+
+
+array_leaders([16, 17, 4, 3, 5, 2])
