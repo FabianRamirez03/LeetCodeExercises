@@ -345,5 +345,34 @@ class ArrayLeaders(unittest.TestCase):
         self.assertEqual(result, array_leaders(arr))
 
 
+class Sort012(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1?page=1&difficulty=Easy&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [[0, 1, 2, 0, 1, 2], [0, 0, 1, 1, 2, 2]],
+            [
+                [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1],
+                [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
+            ],
+        ]
+    )
+    def test_sort012(self, arr, result):
+        self.assertEqual(result, sort012(arr))
+
+
+class Strstr(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/implement-strstr/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            ["GeeksForGeeks", "Fr", -1],
+            ["GeeksForGeeks", "For", 5],
+        ]
+    )
+    def test_sort012(self, s, x, result):
+        self.assertEqual(result, strstr(s, x))
+
+
 if __name__ == "__main__":
     unittest.main()
