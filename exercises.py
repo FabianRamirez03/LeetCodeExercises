@@ -735,3 +735,38 @@ def strstr(s, x):
             return i
         i += 1
     return -1
+
+
+# 28
+# https://www.geeksforgeeks.org/problems/closest-number5728/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+def closestNumber(N, M):
+    lower_candidate = (N // M) * M
+
+    upper_candidate = (N // M + 1) * M if N % M != 0 else lower_candidate
+
+    if abs(N - lower_candidate) == abs(N - upper_candidate):
+        return (
+            lower_candidate
+            if abs(lower_candidate) > abs(upper_candidate)
+            else upper_candidate
+        )
+    return (
+        lower_candidate
+        if abs(N - lower_candidate) < abs(N - upper_candidate)
+        else upper_candidate
+    )
+
+
+# 30
+# https://www.geeksforgeeks.org/problems/remove-common-characters-and-concatenate-1587115621/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+
+def concatenatedString(s1, s2):
+
+    common_chars = set(s1).intersection(set(s2))
+    result = s1 + s2
+    for char in common_chars:
+        result = result.replace(char, "")
+    if len(result) == 0:
+        return -1
+    return result

@@ -374,5 +374,18 @@ class Strstr(unittest.TestCase):
         self.assertEqual(result, strstr(s, x))
 
 
+class ConcatenatedString(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/remove-common-characters-and-concatenate-1587115621/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            ["abcs", "cxzca", "bsxz"],
+            ["aacdb", "gafd", "cbgf"],
+        ]
+    )
+    def test_sort012(self, s1, s2, result):
+        self.assertEqual(result, concatenatedString(s1, s2))
+
+
 if __name__ == "__main__":
     unittest.main()
