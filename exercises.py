@@ -770,3 +770,24 @@ def concatenatedString(s1, s2):
     if len(result) == 0:
         return -1
     return result
+
+
+# 31
+# https://www.geeksforgeeks.org/problems/find-the-fine4353/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+
+def totalFine(date, cars, fine):
+    result = 0
+    even = True
+    if date % 2 == 0:
+        even = False
+
+    for i in range(0, len(cars)):
+        if even:
+            if cars[i] % 2 == 0:
+                result += fine[i]
+        else:
+            if cars[i] % 2 != 0:
+                result += fine[i]
+
+    return result

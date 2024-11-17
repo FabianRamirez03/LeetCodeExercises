@@ -387,5 +387,18 @@ class ConcatenatedString(unittest.TestCase):
         self.assertEqual(result, concatenatedString(s1, s2))
 
 
+class TotalFine(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/find-the-fine4353/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            [12, [2375, 7682, 2325, 2352], [250, 500, 350, 200], 600],
+            [8, [2222, 2223, 2224], [200, 300, 400], 300],
+        ]
+    )
+    def test_sort012(self, date, car, fine, result):
+        self.assertEqual(result, totalFine(date, car, fine))
+
+
 if __name__ == "__main__":
     unittest.main()
