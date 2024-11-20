@@ -757,7 +757,7 @@ def closestNumber(N, M):
     )
 
 
-# 30
+# 29
 # https://www.geeksforgeeks.org/problems/remove-common-characters-and-concatenate-1587115621/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
 
 
@@ -772,7 +772,7 @@ def concatenatedString(s1, s2):
     return result
 
 
-# 31
+# 30
 # https://www.geeksforgeeks.org/problems/find-the-fine4353/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
 
 
@@ -793,7 +793,7 @@ def totalFine(date, cars, fine):
     return result
 
 
-# 32
+# 31
 # https://www.geeksforgeeks.org/problems/minimize-string-value1010/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
 
 
@@ -813,7 +813,7 @@ def minimizeStringValue(S, K):
     return result
 
 
-# 33
+# 32
 """
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
 For example, number 9 has binary representation 1001 and contains a binary gap of length 2. 
@@ -845,7 +845,7 @@ def binary_gap(N):
     return result
 
 
-# 34
+# 33
 def first_unique_number(array):
     ocurrences = {}
     for num in array:
@@ -862,7 +862,7 @@ def first_unique_number(array):
 
 ######################################################################
 
-# 35
+# 34
 import re
 
 
@@ -897,7 +897,7 @@ def is_valid_password(password):
 
 ##################################################################
 
-# 36
+# 35
 # https://app.codility.com/programmers/trainings/5/parking_bill/
 
 import datetime
@@ -940,4 +940,109 @@ def get_total_time(E, L):
     return total_time
 
 
-parking_bill("09:42", "11:42")
+# 36
+# https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/6388cbb0765bb2154037ce84
+
+
+def countIslands_custom(matrix):
+    islands = []
+    for y in range(len(matrix)):
+        for x in range(len(matrix[0])):
+            if matrix[y][x] == 1:
+                populate_islands((y, x), islands, matrix)
+    print(islands)
+    return len(islands)
+
+
+def populate_islands(coords, islands, matrix):
+    closest_neighbor = get_closest_neighbor(coords, matrix)
+    print(f"coords: {coords} closest_neighbor: {closest_neighbor}")
+    if closest_neighbor != -1 and len(islands) != 0:
+        for i in range(len(islands)):
+            if closest_neighbor in islands[i]:
+                islands[i].append(coords)
+                return
+        islands.append([coords])
+
+    else:
+        islands.append([coords])
+
+
+def get_closest_neighbor(coords, matrix):
+    result = -1
+    y = coords[0]
+    x = coords[1]
+    # Up neigboard
+    try:
+        if matrix[y - 1][x] == 1 and y != 0:
+            result = (y - 1, x)
+            return result
+    except:
+        pass
+    # Left neigboard
+    try:
+        if matrix[y][x - 1] == 1 and x != 0:
+            result = (y, x - 1)
+            return result
+    except:
+        pass
+    # Right neigboard
+    try:
+        if matrix[y][x + 1] == 1:
+            result = (y, x + 1)
+            return result
+    except:
+        pass
+    # Down neigboard
+    try:
+        if matrix[y + 1][x] == 1:
+            result = (y + 1, x)
+            return result
+    except:
+        pass
+
+    return result
+
+
+# trying BFS approach
+
+
+def countIslands(matrix):
+    total_islands = 0
+    rows = len(matrix)
+    columns = len(matrix[0])
+
+    for row in range(rows):
+        for column in range(columns):
+            if matrix[row][column] == 1:
+                island_dfs(matrix, row, column)
+                total_islands += 1
+    return total_islands
+
+
+def island_dfs(matrix, row, column):
+    if row >= len(matrix) or row < 0 or column >= len(matrix[0]) or column < 0:
+        return
+    if matrix[row][column] == 0:
+        return
+
+    matrix[row][column] = 0
+
+    # Up
+    island_dfs(matrix, row - 1, column)
+    # Right
+    island_dfs(matrix, row, column + 1)
+    # Down
+    island_dfs(matrix, row + 1, column)
+    # Left
+    island_dfs(matrix, row, column - 1)
+
+
+matrix = [
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 1, 1],
+    [0, 1, 1, 1, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+]
+countIslands(matrix)
