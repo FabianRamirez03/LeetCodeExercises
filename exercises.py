@@ -941,7 +941,7 @@ def get_total_time(E, L):
 
 
 # 36
-# https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/6388cbb0765bb2154037ce84
+# https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/number-of-islands-easy
 
 
 def countIslands_custom(matrix):
@@ -1007,7 +1007,7 @@ def get_closest_neighbor(coords, matrix):
 # trying BFS approach
 
 
-def countIslands(matrix):
+def count_islands(matrix):
     total_islands = 0
     rows = len(matrix)
     columns = len(matrix[0])
@@ -1038,11 +1038,41 @@ def island_dfs(matrix, row, column):
     island_dfs(matrix, row, column - 1)
 
 
-matrix = [
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 1],
-    [0, 1, 1, 1, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0],
-]
-countIslands(matrix)
+# 37
+# https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/biggest-island-easy
+
+
+def biggest_island(matrix):
+    biggest_island_len = 0
+    rows = len(matrix)
+    columns = len(matrix[0])
+
+    for row in range(rows):
+        for column in range(columns):
+            if matrix[row][column] == 1:
+                island_size = island_dfs_biggest(matrix, row, column)
+                if island_size > biggest_island_len:
+                    biggest_island_len = island_size
+    return biggest_island_len
+
+
+def island_dfs_biggest(matrix, row, column):
+    if row >= len(matrix) or row < 0 or column >= len(matrix[0]) or column < 0:
+        return 0
+    if matrix[row][column] == 0:
+        return 0
+
+    matrix[row][column] = 0
+
+    area = 1
+
+    # Up
+    area += island_dfs_biggest(matrix, row - 1, column)
+    # Right
+    area += island_dfs_biggest(matrix, row, column + 1)
+    # Down
+    area += island_dfs_biggest(matrix, row + 1, column)
+    # Left
+    area += island_dfs_biggest(matrix, row, column - 1)
+
+    return area

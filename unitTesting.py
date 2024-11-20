@@ -473,7 +473,7 @@ class Parking_bill(unittest.TestCase):
             ["09:42", "10:42", 5],  # One exact hou = 2 + 5
         ]
     )
-    def test_longest_password(self, E, L, result):
+    def test_parking_bill(self, E, L, result):
         self.assertEqual(result, parking_bill(E, L))
 
 
@@ -543,8 +543,78 @@ class CountIslands(unittest.TestCase):
             ],
         ]
     )
-    def test_longest_password(self, matrix, result):
-        self.assertEqual(result, countIslands(matrix))
+    def test_count_islands(self, matrix, result):
+        self.assertEqual(result, count_islands(matrix))
+
+
+class BiggestIsland(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            [
+                [
+                    [1, 1, 1, 0, 0],
+                    [0, 1, 0, 0, 1],
+                    [0, 0, 1, 1, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                ],
+                4,
+            ],
+            [
+                [
+                    [0, 1, 1, 1, 0],
+                    [0, 0, 0, 1, 1],
+                    [0, 1, 1, 1, 0],
+                    [0, 1, 1, 0, 0],
+                    [0, 0, 0, 0, 0],
+                ],
+                10,
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                16,
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 1, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                16,
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 1, 0, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                15,
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [0, 0, 1, 0, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                7,
+            ],
+        ]
+    )
+    def test_biggest_island(self, matrix, result):
+        self.assertEqual(result, biggest_island(matrix))
 
 
 if __name__ == "__main__":
