@@ -1076,3 +1076,36 @@ def island_dfs_biggest(matrix, row, column):
     area += island_dfs_biggest(matrix, row, column - 1)
 
     return area
+
+
+# 38
+# https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/flood-fill-easy
+
+
+def flood_fill(matrix, starting_cell, new_color):
+    y = starting_cell[0]
+    x = starting_cell[1]
+    current_color = matrix[y][x]
+
+    if current_color != new_color:
+        flood_fill_bsf(matrix, new_color, current_color, y, x)
+
+    return matrix
+
+
+def flood_fill_bsf(matrix, new_color, current_color, y, x):
+    if y < 0 or y >= len(matrix) or x < 0 or x >= len(matrix[0]):
+        return
+    if matrix[y][x] != current_color:
+        return
+
+    matrix[y][x] = new_color
+
+    # Up
+    flood_fill_bsf(matrix, new_color, current_color, y - 1, x)
+    # Right
+    flood_fill_bsf(matrix, new_color, current_color, y, x + 1)
+    # Down
+    flood_fill_bsf(matrix, new_color, current_color, y + 1, x)
+    # Left
+    flood_fill_bsf(matrix, new_color, current_color, y, x - 1)

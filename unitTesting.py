@@ -617,5 +617,69 @@ class BiggestIsland(unittest.TestCase):
         self.assertEqual(result, biggest_island(matrix))
 
 
+class FloodFill(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            [
+                [
+                    [1, 1, 1, 0, 0],
+                    [0, 1, 0, 0, 1],
+                    [0, 0, 1, 1, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                ],
+                (1, 1),
+                4,
+                [
+                    [4, 4, 4, 0, 0],
+                    [0, 4, 0, 0, 1],
+                    [0, 0, 1, 1, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                ],
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 1, 0, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                (4, 4),
+                4,
+                [
+                    [4, 4, 4, 4, 4],
+                    [4, 0, 0, 0, 4],
+                    [4, 0, 1, 0, 0],
+                    [4, 0, 0, 0, 4],
+                    [4, 4, 4, 4, 4],
+                ],
+            ],
+            [
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 1, 0, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+                (2, 2),
+                4,
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 4, 0, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 1],
+                ],
+            ],
+        ]
+    )
+    def test_flood_fill(self, matrix, starting_cell, new_color, result):
+        self.assertEqual(result, flood_fill(matrix, starting_cell, new_color))
+
+
 if __name__ == "__main__":
     unittest.main()
