@@ -813,6 +813,7 @@ def minimizeStringValue(S, K):
     return result
 
 
+# 33
 """
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
 For example, number 9 has binary representation 1001 and contains a binary gap of length 2. 
@@ -844,6 +845,7 @@ def binary_gap(N):
     return result
 
 
+# 34
 def first_unique_number(array):
     ocurrences = {}
     for num in array:
@@ -860,6 +862,7 @@ def first_unique_number(array):
 
 ######################################################################
 
+# 35
 import re
 
 
@@ -890,3 +893,51 @@ def is_valid_password(password):
             total_letter += 1
 
     return total_letter % 2 == 0 and total_num % 2 == 1
+
+
+##################################################################
+
+# 36
+# https://app.codility.com/programmers/trainings/5/parking_bill/
+
+import datetime
+
+
+def parking_bill(E, L):
+    total_time = get_total_time(E, L)
+    total_seconds = total_time.seconds
+
+    total_hours = total_seconds // 3600
+    remaining_minutes = (total_seconds % 3600) // 60
+
+    initial_fee = 2
+    first_hour_fee = 3
+    extra_hour_fee = 4
+
+    # Calculating bill
+
+    total_bill = 0
+
+    total_bill += initial_fee
+
+    if remaining_minutes > 0:
+        total_bill += first_hour_fee
+        remaining_minutes = 0
+    elif total_hours >= 1:
+        total_bill += first_hour_fee
+        total_hours -= 1
+
+    total_bill += extra_hour_fee * total_hours
+
+    return total_bill
+
+
+def get_total_time(E, L):
+    hours_format = "%H:%M"
+    enter_time = datetime.datetime.strptime(E, hours_format)
+    leave_time = datetime.datetime.strptime(L, hours_format)
+    total_time = leave_time - enter_time
+    return total_time
+
+
+parking_bill("09:42", "11:42")

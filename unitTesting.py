@@ -462,5 +462,20 @@ class Longest_password(unittest.TestCase):
         self.assertEqual(result, longest_password(passwords))
 
 
+class Parking_bill(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            ["10:00", "13:21", 17],  # 3 horas 21 minutes  = 2 + 3 + 3*4 = 17
+            ["09:42", "09:42", 2],  # Only entrance
+            ["09:42", "09:43", 5],  # Entrance plus first hour
+            ["09:42", "15:42", 25],  # No additional minutes 6 hours = 2 + 3 + 5*4 = 25
+            ["09:42", "10:42", 5],  # One exact hou = 2 + 5
+        ]
+    )
+    def test_longest_password(self, E, L, result):
+        self.assertEqual(result, parking_bill(E, L))
+
+
 if __name__ == "__main__":
     unittest.main()
