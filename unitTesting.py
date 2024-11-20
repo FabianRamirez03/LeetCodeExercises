@@ -400,5 +400,67 @@ class TotalFine(unittest.TestCase):
         self.assertEqual(result, totalFine(date, car, fine))
 
 
+"""
+
+class MinimizeStringValue(unittest.TestCase):
+    # https://www.geeksforgeeks.org/problems/minimize-string-value1010/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+    @parameterized.expand(
+        [
+            ["abccc", 1, 6],
+            ["aaab", 2, 2],
+            ["adcceec", 2, 7],
+        ]
+    )
+    def test_sort012(self, S, K, result):
+        self.assertEqual(result, minimizeStringValue(S, K))
+"""
+
+
+class Binary_gap(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            [529, 4],  # 529 == 1000010001
+            [9, 2],  # 9 == 1001
+            [20, 1],  # 20 == 10100
+            [15, 0],  # 15 == 1111
+            [32, 0],  # 20 == 100000
+            [561892, 3],  # 561892 == 10001001001011100100
+            [1376796946, 5],  # 20 == 1010010000100000100000100010010
+        ]
+    )
+    def test_binary_gap(self, N, result):
+        self.assertEqual(result, binary_gap(N))
+
+
+class First_unique_number(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            [[4, 10, 5, 4, 2, 10], 5],
+            [[4, 6, 6, 4, 2, 10], 2],
+            [[4, 6, 6, 4, 4, 10], 10],
+            [[4, 6, 6, 4, 4, 6], -1],
+            [[1, 6, 6, 4, 4, 6], 1],
+            [[1, 2, 3, 4, 5, 6], 1],
+        ]
+    )
+    def test_first_unique_number(self, A, result):
+        self.assertEqual(result, first_unique_number(A))
+
+
+class Longest_password(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            ["test 5 a0A pass007 ?xy1", 7],
+            ["test 5 a0A pass007# ?xy1", 3],
+        ]
+    )
+    def test_longest_password(self, passwords, result):
+        self.assertEqual(result, longest_password(passwords))
+
+
 if __name__ == "__main__":
     unittest.main()

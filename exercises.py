@@ -791,3 +791,102 @@ def totalFine(date, cars, fine):
                 result += fine[i]
 
     return result
+
+
+# 32
+# https://www.geeksforgeeks.org/problems/minimize-string-value1010/1?page=1&company=Microsoft&difficulty=Basic&sortBy=submissions
+
+
+def minimizeStringValue(S, K):
+    char_counts = {}
+    for char in S:
+        try:
+            char_counts[char] += 1
+        except:
+            char_counts[char] = 1
+    result = 0
+    for _, count in char_counts.items():
+        actual_count = count - K
+        if actual_count < 1:
+            actual_count = 1
+        result += actual_count**2
+    return result
+
+
+"""
+A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
+For example, number 9 has binary representation 1001 and contains a binary gap of length 2. 
+The number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3. 
+The number 20 has binary representation 10100 and contains one binary gap of length 1. 
+The number 15 has binary representation 1111 and has no binary gaps. 
+The number 32 has binary representation 100000 and has no binary gaps.
+"""
+
+
+def binary_gap(N):
+    bin_N = bin(N)[2:]
+    result = 0
+    pivot = 0
+    counting_zeros = False
+    for bit in bin_N:
+        if not counting_zeros and bit == "1":
+            counting_zeros = True
+            pivot = 0
+        elif bit == "0":
+            counting_zeros = True
+            pivot += 1
+        elif counting_zeros and bit == "1":
+            if pivot > result:
+                result = pivot
+            pivot = 0
+            counting_zeros = False
+
+    return result
+
+
+def first_unique_number(array):
+    ocurrences = {}
+    for num in array:
+        if num not in ocurrences:
+            ocurrences[num] = 1
+        else:
+            ocurrences[num] += 1
+
+    for key, value in ocurrences.items():
+        if value == 1:
+            return key
+    return -1
+
+
+######################################################################
+
+import re
+
+
+def longest_password(passwords):
+    passwords = passwords.split(" ")
+    longest_valid_lenght = -1
+    for password in passwords:
+        if is_valid_password(password) and len(password) > longest_valid_lenght:
+            longest_valid_lenght = len(password)
+
+    return longest_valid_lenght
+
+
+def is_valid_password(password):
+    alphanumeric_pattern = "^[a-zA-Z0-9_]+$"
+    num_pattern = "[0-9]"
+
+    if not re.match(alphanumeric_pattern, password):
+        return False
+
+    total_num = 0
+    total_letter = 0
+
+    for char in password:
+        if re.match(num_pattern, char):
+            total_num += 1
+        else:
+            total_letter += 1
+
+    return total_letter % 2 == 0 and total_num % 2 == 1
