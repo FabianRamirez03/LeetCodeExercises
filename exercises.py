@@ -1109,3 +1109,48 @@ def flood_fill_bsf(matrix, new_color, current_color, y, x):
     flood_fill_bsf(matrix, new_color, current_color, y + 1, x)
     # Left
     flood_fill_bsf(matrix, new_color, current_color, y, x - 1)
+
+
+# 39
+# https://leetcode.com/problems/sign-of-the-product-of-an-array/
+
+
+def arraySign(nums: list[int]) -> int:
+    if len(nums) <= 1:
+        if nums[0] == 0:
+            return 0
+        else:
+            return nums[0] // abs(nums[0])
+    if nums[0] == 0 or nums[1] == 0:
+        return 0
+    initial_sign = nums[0] * nums[1]
+    result = initial_sign // abs(initial_sign)
+    del initial_sign
+
+    for num in nums[2:]:
+        if num == 0:
+            result = 0
+            break
+        elif num < 0 and result < 0:
+            result = 1
+        elif num > 0 and result < 0:
+            result = -1
+        elif num < 0 and result > 0:
+            result = -1
+        else:  # num > 0 and result > 0
+            result = 1
+
+    return result
+
+
+"""
+MostVoted Leetcode
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        ans = 1
+        for x in nums: 
+            if x == 0: return 0 
+            if x < 0: ans *= -1
+        return ans 
+"""

@@ -681,5 +681,23 @@ class FloodFill(unittest.TestCase):
         self.assertEqual(result, flood_fill(matrix, starting_cell, new_color))
 
 
+class ArraySign(unittest.TestCase):
+
+    @parameterized.expand(
+        [
+            [[-1, -2, -3, -4, 3, 2, 1], 1],
+            [[1, 5, 0, 2, -3], 0],
+            [[-1, 1, -1, 1, -1], -1],
+            [[-1, 1, -1, 1, -1, 0], 0],
+            [[-1, 1, -1, 1, -1, -1], 1],
+            [[-1, 0, -1, 1, -1, -1], 0],
+            [[-1], -1],
+            [[1], 1],
+        ]
+    )
+    def test_array_sign(self, nums, result):
+        self.assertEqual(result, arraySign(nums))
+
+
 if __name__ == "__main__":
     unittest.main()
