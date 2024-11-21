@@ -1166,3 +1166,40 @@ def sumZero(N):
         result.append(0)
 
     return result
+
+
+# 41
+from util import LinkedList
+
+
+def reverseKNodes(head, k):
+    current = head
+    while current:
+        end_node = get_node_after_Kblock(current, k)
+        if end_node:
+            print(end_node.value)
+            for i in range(1, k):
+                initial_node = current
+                switching_node = current
+                for j in range(0, k - i):
+                    switch_nodes(switching_node)
+                    switching_node = switching_node.next
+            current = end_node.next
+        else:
+            break
+
+
+def get_node_after_Kblock(current, k):
+    for i in range(k - 1):
+        if not current.next:
+            return None
+        current = current.next
+    return current
+
+
+def switch_nodes(node):
+    next_value = node.next.value
+    own_value = node.value
+
+    node.next.value = own_value
+    node.value = next_value

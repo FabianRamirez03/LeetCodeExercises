@@ -26,3 +26,11 @@ class LinkedList:
             values.append(current.value)
             current = current.next
         print(" -> ".join(map(str, values)))
+
+    @classmethod
+    def from_list(cls, python_list):
+        """Crea una lista enlazada a partir de una lista de Python."""
+        linked_list = cls()
+        for value in python_list:
+            linked_list.append(value)
+        return linked_list
