@@ -1154,3 +1154,15 @@ class Solution:
             if x < 0: ans *= -1
         return ans 
 """
+
+
+# 40
+def sumZero(N):
+    result = []
+    for i in range(1, N // 2 + 1):
+        result.append(i)
+        result.append(-i)
+    if N % 2 == 1:
+        result.append(0)
+
+    return result
